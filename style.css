@@ -568,3 +568,119 @@ footer {
     margin-top: auto;
     color: var(--text-secondary);
 }
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.2s;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Allow links within dropdown to control their hover state, 
+   but also allow parent hover to highlight button if needed */
+.dropdown:hover .dropbtn,
+.dropbtn:hover {
+    color: var(--accent);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-panel);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    z-index: 101;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    top: 100%;
+    /* Positioning below header */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 0;
+    margin-top: 0;
+}
+
+/* Triangle/Arrow for dropdown */
+.dropdown-content::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--bg-panel) transparent;
+}
+
+.dropdown-content a {
+    color: var(--text-secondary);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInDropdown 0.2s ease;
+}
+
+@keyframes fadeInDropdown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

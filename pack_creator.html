@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samplix Pack Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logonew.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Pack Creator Specific Styles */
+        .creator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: var(--accent);
+            background-color: rgba(79, 255, 163, 0.05);
+        }
+
+        .drop-zone p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .editor-panel {
+            display: none;
+            /* Hidden until file loaded */
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            margin-bottom: 0;
+        }
+
+        .tab-content-container {
+            flex: 1;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            overflow-y: auto;
+            flex: 1;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        select {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        /* Map */
+        .map-container {
+            width: 100%;
+            height: 500px;
+            background-color: #1e1e1e;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .map-container:active {
+            cursor: grabbing;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* Loading */
+        .spinner {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logonew.png" alt="Samplix Logo">
+                <span>Samplix</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="download.html" data-i18n="nav.download">Download</a>
+                <a href="skins.html" data-i18n="nav.skins">Skins</a>
+                <div class="dropdown">
+                    <button class="dropbtn" data-i18n="nav.tools">Tools</button>
+                    <div class="dropdown-content">
+                        <a href="theme-creator.html" data-i18n="nav.theme_creator">Theme Creator</a>
+                        <a href="pack_creator.html" class="active" data-i18n="nav.pack_creator">Pack Creator</a>
+                    </div>
+                </div>
+                <a href="supported_packs.html" data-i18n="nav.packs">Packs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1 data-i18n="creator.title">Pack <span class="accent">Creator</span></h1>
+            <p data-i18n="creator.subtitle">Organize your samples and visualize your library.</p>
+        </section>
+
+        <div class="creator-container">
+            <!-- Drop Zone -->
+            <div id="dropZone" class="drop-zone">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p data-i18n="creator.drop_text">Drop a folder containing samples here</p>
+                <button class="btn secondary" onclick="document.getElementById('folderInput').click()"
+                    data-i18n="creator.select_folder">Select
+                    Folder</button>
+                <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+                <div class="spinner" id="loadingSpinner"></div>
+            </div>
+
+            <!-- Editor -->
+            <div id="editorPanel" class="editor-panel">
+                <div class="editor-header">
+                    <h2 id="packNameDisplay" data-i18n="creator.pack.name">My Pack</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="btnExport" class="btn primary" data-i18n="creator.btn.export">Export .json</button>
+                        <button id="btnNew" class="btn secondary" data-i18n="creator.btn.new">Open Other</button>
+                    </div>
+                </div>
+
+                <!-- Metadata Inputs -->
+                <div class="panel" style="padding: 15px; margin-bottom: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 15px;">
+                        <div class="form-group">
+                            <label data-i18n="creator.field.name">Name</label>
+                            <input type="text" id="packName" placeholder="Pack Name"
+                                data-i18n-placeholder="creator.field.name">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="creator.field.author">Author</label>
+                            <input type="text" id="packAuthor" placeholder="Author"
+                                data-i18n-placeholder="creator.field.author">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="creator.field.desc">Description</label>
+                            <input type="text" id="packDesc" placeholder="Description"
+                                data-i18n-placeholder="creator.field.desc">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="tableView" data-i18n="creator.tab.list">List View</button>
+                    <button class="tab-btn" data-tab="mapView" data-i18n="creator.tab.map">Map View</button>
+                </div>
+
+                <div class="tab-content-container">
+                    <!-- List View -->
+                    <div id="tableView" class="tab-content active"
+                        style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="table-wrapper">
+                            <table id="samplesTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;" data-i18n="creator.table.play">Play</th>
+                                        <th data-i18n="creator.table.filename">Filename</th>
+                                        <th data-i18n="creator.table.role">Role</th>
+                                        <th data-i18n="creator.table.key">Key</th>
+                                        <th data-i18n="creator.table.bpm">BPM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows inserted by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Map View -->
+                    <div id="mapView" class="tab-content">
+                        <div class="map-container" id="mapContainer">
+                            <canvas id="mapCanvas"></canvas>
+                        </div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);"
+                            data-i18n="creator.map.hint">
+                            * Drag points to reposition (mockup). For full auto-mapping, use the Desktop app.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://hexitrely.pl" target="_blank">Hexit Rely</a>
+                <a href="https://open.spotify.com/artist/4hcXADTFvPXtRxVTGYXW4I?si=PtVSpKbdTgS1t2JG468iXA&nd=1"
+                    target="_blank">Spotify</a>
+                <a href="https://www.instagram.com/hexit_official" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/channel/UCIpPTE3HsmUSAb-yfNybvSA" target="_blank">YouTube</a>
+            </div>
+            <p data-i18n="footer.copyright">&copy; 2026 Samplix Project.</p>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="pack_creator.js"></script>
+</body>
+
+</html>

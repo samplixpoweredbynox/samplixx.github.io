@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samplix VST</title>
+    <title>Samplix - Supported Packs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,39 +20,40 @@
                 <span>Samplix</span>
             </a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="desktop.html">Desktop</a>
-                <a href="vst.html" class="active">VST Plugin</a>
-                <a href="skins.html">Skins</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="download.html" data-i18n="nav.download">Download</a>
+                <a href="skins.html" data-i18n="nav.skins">Skins</a>
                 <div class="dropdown">
                     <button class="dropbtn" data-i18n="nav.tools">Tools</button>
                     <div class="dropdown-content">
-                        <a href="theme-creator.html">Theme Creator</a>
-                        <a href="pack_creator.html">Pack Creator</a>
+                        <a href="theme-creator.html" data-i18n="nav.theme_creator">Theme Creator</a>
+                        <a href="pack_creator.html" data-i18n="nav.pack_creator">Pack Creator</a>
                     </div>
                 </div>
-                <a href="supported_packs.html">Packs</a>
+                <a href="supported_packs.html" class="active" data-i18n="nav.packs">Packs</a>
             </div>
         </div>
     </nav>
 
     <main class="container centered-content">
-        <h1>Samplix <span class="accent">VST3</span></h1>
-        <div class="badge">COMING SOON</div>
-        <p>Bring the power of Samplix directly into your DAW.</p>
+        <div class="page-header">
+            <h1 data-i18n="packs.title">Supported <span class="accent">Sample Packs</span></h1>
+            <p data-i18n="packs.subtitle">Explore the official and community-created sample packs supported by Samplix.
+            </p>
+        </div>
 
-        <div class="newsletter">
-            <p>Join our community on Discord:</p>
-            <div class="input-group" style="justify-content: center;">
-                <a href="https://discord.com/invite/BbrtEFCeJb" target="_blank" class="btn primary">Join Discord
-                    Server</a>
+        <section class="features">
+            <!-- Placeholder for packs -->
+            <div class="feature-card">
+                <h3 data-i18n="packs.card.official.title">Official Factory Content</h3>
+                <p data-i18n="packs.card.official.desc">The core collection of high-quality sounds included with
+                    Samplix.</p>
             </div>
-        </div>
-
-        <div class="vst-preview">
-            <!-- Mockup logic -->
-            <div class="wireframe">VST Interface Mockup</div>
-        </div>
+            <div class="feature-card">
+                <h3 data-i18n="packs.card.community.title">Community Contributions</h3>
+                <p data-i18n="packs.card.community.desc">Coming Soon. Packs created by the Samplix community.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -64,9 +65,11 @@
                 <a href="https://www.instagram.com/hexit_official" target="_blank">Instagram</a>
                 <a href="https://www.youtube.com/channel/UCIpPTE3HsmUSAb-yfNybvSA" target="_blank">YouTube</a>
             </div>
-            <p>&copy; 2026 Samplix Project.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Samplix Project.</p>
         </div>
     </footer>
+    <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
 </body>
 
 </html>
