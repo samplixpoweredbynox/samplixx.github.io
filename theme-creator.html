@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samplix Theme Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logonew.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logonew.png" alt="Samplix Logo">
+                <span>Samplix</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="desktop.html">Desktop</a>
+                <a href="vst.html">VST Plugin</a>
+                <a href="skins.html">Skins</a>
+                <a href="theme-creator.html" class="active">Theme Creator</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <header>
+            <h1>Samplix <span class="accent">Theme Creator</span></h1>
+            <p>Design stunning themes for your Samplix experience.</p>
+        </header>
+
+        <main>
+            <div class="panel meta-panel">
+                <h2>Theme Metadata</h2>
+                <div class="form-group">
+                    <label for="themeName">Theme Name</label>
+                    <input type="text" id="themeName" value="My Custom Theme" placeholder="Enter theme name">
+                </div>
+                <div class="form-group">
+                    <label for="themeAuthor">Author</label>
+                    <input type="text" id="themeAuthor" value="Creator" placeholder="Your name">
+                </div>
+            </div>
+
+            <div class="panel colors-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="dark">Dark Mode</button>
+                    <button class="tab-btn" data-tab="light">Light Mode</button>
+                </div>
+
+                <div id="dark" class="tab-content active">
+                    <!-- Colors will be injected here by JS -->
+                </div>
+                <div id="light" class="tab-content">
+                    <!-- Colors will be injected here by JS -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="actions">
+                <input type="file" id="importFile" accept=".sltheme,.json" hidden>
+                <button id="btnImport" class="btn secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Import Theme
+                </button>
+                <button id="btnExport" class="btn primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    Export .sltheme
+                </button>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

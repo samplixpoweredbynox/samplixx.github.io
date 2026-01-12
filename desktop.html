@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samplix Desktop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logonew.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logonew.png" alt="Samplix Logo">
+                <span>Samplix</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="desktop.html" class="active">Desktop</a>
+                <a href="vst.html">VST Plugin</a>
+                <a href="skins.html">Skins</a>
+                <a href="theme-creator.html">Theme Creator</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Samplix <span class="accent">Desktop</span></h1>
+            <p>The ultimate standalone experience.</p>
+        </section>
+
+        <!-- New Split Layout -->
+        <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+
+            <!-- Left: Description & Changelog -->
+            <div style="flex: 2; min-width: 300px;">
+                <div class="panel">
+                    <h2>What's New in Alpha 2.6</h2>
+                    <ul style="padding-left: 20px; line-height: 1.8; color: var(--text-secondary); margin-top: 10px;">
+                        <li>Improved Theme Engine with real-time persistence.</li>
+                        <li>Fixed audio glitching on sample switch.</li>
+                        <li>New "Mint" and "Ocean" default themes.</li>
+                        <li>Performance optimizations for large libraries.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <img src="assets/app_screenshot_2.png" alt="Samplix Interface"
+                        style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft);">
+                </div>
+            </div>
+
+            <!-- Right: Downloads -->
+            <div style="flex: 1; min-width: 250px; position: sticky; top: 90px;">
+                <div class="download-card" style="width: 100%; margin-bottom: 20px;">
+                    <h2>Windows</h2>
+                    <p class="version">Version Alpha 2.6 .exe</p>
+                    <button class="btn primary" style="width: 100%; justify-content: center;">Download Windows</button>
+                </div>
+
+                <div class="download-card" style="width: 100%;">
+                    <h2>macOS</h2>
+                    <p class="version">Version Alpha 2.6 .app</p>
+                    <button class="btn secondary" style="width: 100%; justify-content: center;">Download macOS</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Samplix Project.</p>
+    </footer>
+</body>
+
+</html>
