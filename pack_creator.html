@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samplix Pack Creator</title>
+    <meta name="description"
+        content="Build your own sample packs for Samplix. Organize samples, visualize mappings, and export for the community.">
+    <meta name="keywords"
+        content="pack creator, sample pack builder, audio mapping, sample organization, samplix tools">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -165,12 +169,17 @@
                 <img src="assets/logonew.png" alt="Samplix Logo">
                 <span>Samplix</span>
             </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html" data-i18n="nav.home">Home</a>
                 <a href="download.html" data-i18n="nav.download">Download</a>
                 <a href="skins.html" data-i18n="nav.skins">Skins</a>
                 <div class="dropdown">
-                    <button class="dropbtn" data-i18n="nav.tools">Tools</button>
+                    <button class="dropbtn active" data-i18n="nav.tools">Tools</button>
                     <div class="dropdown-content">
                         <a href="theme-creator.html" data-i18n="nav.theme_creator">Theme Creator</a>
                         <a href="pack_creator.html" class="active" data-i18n="nav.pack_creator">Pack Creator</a>
@@ -291,6 +300,7 @@
         </div>
     </footer>
 
+    <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/i18n.js"></script>
     <script src="pack_creator.js"></script>

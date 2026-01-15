@@ -5,11 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samplix - Download</title>
+    <meta name="description"
+        content="Download Samplix for Windows and macOS. join our Patronite for exclusive rewards.">
+    <meta name="keywords" content="download samplix, sampler download, free sampler, music production software">
+    <meta property="og:title" content="Samplix - Download">
+    <meta property="og:description" content="Choose your platform and start creating with Samplix.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/logonew.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .section-spacer {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .flex-wrap-gap {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .flex-2-min {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .flex-1-min {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .changelog {
+            padding-left: 20px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        .screenshot-container {
+            margin-top: 30px;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .patron-panel {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(79, 255, 163, 0.05) 100%);
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .patron-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .patron-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +93,11 @@
                 <img src="assets/logonew.png" alt="Samplix Logo">
                 <span>Samplix</span>
             </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html" data-i18n="nav.home">Home</a>
                 <a href="download.html" class="active" data-i18n="nav.download">Download</a>
@@ -42,21 +121,20 @@
         </section>
 
         <!-- Desktop Section -->
-        <section style="margin-bottom: 80px;">
-            <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+        <section class="section-spacer">
+            <h2 class="section-header">
                 <span data-i18n="download.desktop">Desktop Application</span>
                 <span class="badge"
                     style="background: var(--accent); color: #000; font-size: 0.8rem; margin-left: 10px; vertical-align: middle;"
                     data-i18n="badge.free">FREE</span>
             </h2>
 
-            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+            <div class="flex-wrap-gap">
                 <!-- Left: Description & Changelog -->
-                <div style="flex: 2; min-width: 300px;">
+                <div class="flex-2-min">
                     <div class="panel">
                         <h2 data-i18n="download.whats_new">What's New in Alpha 2.6</h2>
-                        <ul
-                            style="padding-left: 20px; line-height: 1.8; color: var(--text-secondary); margin-top: 10px;">
+                        <ul class="changelog">
                             <li data-i18n="download.changelog.1">Improved Theme Engine with real-time persistence.</li>
                             <li data-i18n="download.changelog.2">Fixed audio glitching on sample switch.</li>
                             <li data-i18n="download.changelog.3">New "Mint" and "Ocean" default themes.</li>
@@ -64,14 +142,13 @@
                         </ul>
                     </div>
 
-                    <div style="margin-top: 30px;">
-                        <img src="assets/app_screenshot_2.png" alt="Samplix Interface"
-                            style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft);">
+                    <div class="screenshot-container">
+                        <img src="assets/app_screenshot_2.png" alt="Samplix Interface" class="screenshot-img">
                     </div>
                 </div>
 
                 <!-- Right: Downloads -->
-                <div style="flex: 1; min-width: 250px;">
+                <div class="flex-1-min">
                     <div class="download-card" style="width: 100%; margin-bottom: 20px;">
                         <h2>Windows</h2>
                         <p class="version">Version Alpha 2.6 .exe</p>
@@ -94,10 +171,9 @@
         </section>
 
         <!-- Patronite Section -->
-        <section style="margin-bottom: 80px;">
-            <div class="panel"
-                style="background: linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(79, 255, 163, 0.05) 100%); border: 1px solid var(--accent); display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
-                <div style="flex: 2; min-width: 300px;">
+        <section class="section-spacer">
+            <div class="panel patron-panel">
+                <div class="flex-2-min">
                     <h2 style="color: var(--accent); margin-bottom: 15px;" data-i18n="download.patron.title">Become a
                         Patron & Go Premium</h2>
                     <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);"
@@ -105,27 +181,26 @@
                         Support the development of Samplix and unlock exclusive rewards. It's more than just a
                         donation—it's your fast-track to the future of sampling.
                     </p>
-                    <ul
-                        style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <li style="display: flex; align-items: center; gap: 10px;">
+                    <ul class="patron-list">
+                        <li class="patron-item">
                             <span style="color: var(--accent);">🚀</span> <b data-i18n="download.patron.benefit.1">Early
                                 VST Access</b>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
+                        <li class="patron-item">
                             <span style="color: var(--accent);">🎨</span> <b
                                 data-i18n="download.patron.benefit.2">Exclusive Gold Theme</b>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
+                        <li class="patron-item">
                             <span style="color: var(--accent);">💎</span> <b
                                 data-i18n="download.patron.benefit.3">Premium Discord Role</b>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
+                        <li class="patron-item">
                             <span style="color: var(--accent);">❤️</span> <b
                                 data-i18n="download.patron.benefit.4">Support Development</b>
                         </li>
                     </ul>
                 </div>
-                <div style="flex: 1; min-width: 200px; text-align: center;">
+                <div class="flex-1-min" style="text-align: center;">
                     <a href="https://patronite.pl/hexitrely" target="_blank" class="btn primary"
                         style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;"
                         data-i18n="download.patron.btn">Join on
@@ -138,7 +213,7 @@
 
         <!-- VST Section -->
         <section>
-            <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            <h2 class="section-header">
                 <span data-i18n="download.vst.title">VST Plugin</span>
                 <span class="badge"
                     style="background: var(--accent); color: #000; font-size: 0.8rem; margin-left: 10px; vertical-align: middle;"
@@ -176,6 +251,7 @@
             <p>&copy; 2026 Samplix Project.</p>
         </div>
     </footer>
+    <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/i18n.js"></script>
 </body>
