@@ -141,14 +141,14 @@
             <div id="desktop-stable" data-tab-section="desktop" style="display:block;">
                 <div class="dl-spinner-container">
                     <div class="dl-spinner"></div>
-                    <p>Ładowanie wydań...</p>
+                    <p data-i18n="download.loading">Ładowanie wydań...</p>
                 </div>
             </div>
 
             <div id="desktop-beta" data-tab-section="desktop" style="display:none;">
                 <div class="dl-spinner-container">
                     <div class="dl-spinner"></div>
-                    <p>Ładowanie wydań...</p>
+                    <p data-i18n="download.loading">Ładowanie wydań...</p>
                 </div>
             </div>
 
@@ -161,18 +161,22 @@
         <section class="section-spacer">
             <div class="panel patron-panel">
                 <div class="flex-2-min">
-                    <h2 style="color: var(--accent); margin-bottom: 15px;">Wesprzyj mnie na
+                    <h2 style="color: var(--accent); margin-bottom: 15px;" data-i18n="download.patron.title">Wesprzyj
+                        mnie na
                         Patronite</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);"
+                        data-i18n="download.patron.desc">
                         Jeśli podoba Ci się Samplix, możesz wesprzeć jego rozwój na Patronite.
                         Każde wsparcie pomaga tworzyć lepsze narzędzia muzyczne. 🎶
                     </p>
                 </div>
                 <div class="flex-1-min" style="text-align: center;">
                     <a href="https://patronite.pl/hexitrely" target="_blank" class="btn primary"
-                        style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;">Wesprzyj na
+                        style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;"
+                        data-i18n="download.patron.btn">Wesprzyj na
                         Patronite</a>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);">Dziękuję za każde
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);"
+                        data-i18n="download.patron.sub">Dziękuję za każde
                         wsparcie! ❤️</p>
                 </div>
             </div>
@@ -206,14 +210,16 @@
     <!-- Password Modal -->
     <div id="password-modal" class="password-overlay">
         <div class="password-modal">
-            <h3>🔒 Wymagane hasło</h3>
-            <p>Wpisz hasło, aby pobrać plik.</p>
-            <input type="password" id="password-input" placeholder="Hasło..." autocomplete="off">
-            <p id="password-error" class="password-error" style="display:none;">❌ Nieprawidłowe hasło. Spróbuj ponownie.
+            <h3 data-i18n="download.modal.title">🔒 Wymagane hasło</h3>
+            <p data-i18n="download.modal.desc">Wpisz hasło, aby pobrać plik.</p>
+            <input type="password" id="password-input" data-i18n-placeholder="download.modal.placeholder"
+                placeholder="Hasło..." autocomplete="off">
+            <p id="password-error" class="password-error" style="display:none;" data-i18n="download.modal.error">❌
+                Nieprawidłowe hasło. Spróbuj ponownie.
             </p>
             <div class="password-actions">
-                <button id="password-confirm" class="btn primary">Potwierdź</button>
-                <button id="password-cancel" class="btn secondary">Anuluj</button>
+                <button id="password-confirm" class="btn primary" data-i18n="download.modal.confirm">Potwierdź</button>
+                <button id="password-cancel" class="btn secondary" data-i18n="download.modal.cancel">Anuluj</button>
             </div>
         </div>
     </div>

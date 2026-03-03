@@ -10,6 +10,13 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaMsNXM8bWj6
 const BUG_GITHUB_REPO = 'samplixpoweredbynox/SAMPLIX-TOOLS';
 const BUG_API_URL = `https://api.github.com/repos/${BUG_GITHUB_REPO}/releases`;
 
+// ─── Translations Helper ──────────────────────────────────
+
+function getI18n(key, fallback = '') {
+    const lang = localStorage.getItem('samplix_lang') || 'en';
+    return (translations[lang] && translations[lang][key]) ? translations[lang][key] : (fallback || key);
+}
+
 // ─── Fetch versions from GitHub ─────────────────────────
 
 async function loadVersions() {
@@ -22,10 +29,10 @@ async function loadVersions() {
 
         const releases = await response.json();
 
-        select.innerHTML = '<option value="" disabled selected>Wybierz wersję...</option>';
+        select.innerHTML = `<option value="" disabled selected>${getI18n('bug.version_select', 'Select version...')}</option>`;
 
         if (releases.length === 0) {
-            select.innerHTML += '<option value="unknown">Brak wydań</option>';
+            select.innerHTML += `<option value="unknown">${getI18n('bug.version_none', 'No releases')}</option>`;
             return;
         }
 
@@ -40,8 +47,8 @@ async function loadVersions() {
 
     } catch (err) {
         console.error('Failed to fetch versions:', err);
-        select.innerHTML = '<option value="" disabled selected>Błąd ładowania</option>';
-        select.innerHTML += '<option value="unknown">Nie mogę pobrać wersji</option>';
+        select.innerHTML = `<option value="" disabled selected>${getI18n('bug.version_error', 'Loading error')}</option>`;
+        select.innerHTML += `<option value="unknown">${getI18n('bug.version_none', 'No releases')}</option>`;
     }
 }
 
@@ -70,20 +77,20 @@ function initBugForm() {
 
         // Validate
         if (!data.nick || !data.version || !data.tag || !data.description) {
-            showStatus('error', '❌ Wypełnij wszystkie wymagane pola.');
+            showStatus('error', getI18n('bug.error_required', '❌ Please fill in all required fields.'));
             return;
         }
 
         // Check if script URL is configured
         if (!GOOGLE_SCRIPT_URL) {
-            showStatus('error', '⚠️ Backend nie jest jeszcze skonfigurowany (GOOGLE_SCRIPT_URL).');
+            showStatus('error', getI18n('bug.error_backend', '⚠️ Backend not configured.'));
             console.log('Form data that would be sent:', data);
             return;
         }
 
         // Submit
         submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Wysyłanie...';
+        submitBtn.textContent = getI18n('bug.sending', '⏳ Sending...');
 
         try {
             const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -94,7 +101,7 @@ function initBugForm() {
             });
 
             // no-cors means we can't read the response, but if no error was thrown, it likely succeeded
-            showStatus('success', '✅ Zgłoszono błąd');
+            showStatus('success', getI18n('bug.success', '✅ Bug reported successfully'));
             form.reset();
 
             // Re-load versions to reset the select
@@ -102,10 +109,10 @@ function initBugForm() {
 
         } catch (err) {
             console.error('Submission error:', err);
-            showStatus('error', '❌ Wystąpił błąd. Spróbuj ponownie później.');
+            showStatus('error', getI18n('bug.error_generic', '❌ An error occurred.'));
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = '🚀 Wyślij zgłoszenie';
+            submitBtn.textContent = getI18n('bug.submit', '🚀 Send Report');
         }
     });
 }

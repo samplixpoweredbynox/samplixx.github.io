@@ -225,8 +225,8 @@
 
     <main class="container">
         <section class="page-header">
-            <h1>Bug <span class="accent">Tracker</span></h1>
-            <p>Znalazłeś błąd lub masz pomysł? Daj nam znać.</p>
+            <h1 data-i18n="bug.title">Bug <span class="accent">Tracker</span></h1>
+            <p data-i18n="bug.subtitle">Znalazłeś błąd lub masz pomysł? Daj nam znać.</p>
         </section>
 
         <div class="bug-form-container">
@@ -234,55 +234,63 @@
                 <form id="bug-form" class="bug-form" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="bug-nick">Nick <span class="required">*</span></label>
-                            <input type="text" id="bug-nick" name="nick" placeholder="Twój nick..." required>
+                            <label for="bug-nick"><span data-i18n="bug.nick">Nick</span> <span
+                                    class="required">*</span></label>
+                            <input type="text" id="bug-nick" name="nick" data-i18n-placeholder="bug.nick_placeholder"
+                                placeholder="Twój nick..." required>
                         </div>
                         <div class="form-group">
-                            <label for="bug-email">Email</label>
+                            <label for="bug-email" data-i18n="bug.email">Email</label>
                             <input type="email" id="bug-email" name="email" placeholder="email@example.com">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="bug-version">Version <span class="required">*</span></label>
+                            <label for="bug-version"><span data-i18n="bug.version">Version</span> <span
+                                    class="required">*</span></label>
                             <select id="bug-version" name="version" required>
-                                <option value="" disabled selected>Ładowanie wersji...</option>
+                                <option value="" disabled selected data-i18n="bug.version_loading">Ładowanie wersji...
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="bug-tag">Tag <span class="required">*</span></label>
+                            <label for="bug-tag"><span data-i18n="bug.tag">Tag</span> <span
+                                    class="required">*</span></label>
                             <select id="bug-tag" name="tag" required>
-                                <option value="" disabled selected>Wybierz kategorię...</option>
-                                <option value="UI">🎨 UI</option>
-                                <option value="Crash">💥 Crash</option>
-                                <option value="Performance">⚡ Performance</option>
-                                <option value="Feature">✨ Feature Request</option>
-                                <option value="Other">📌 Other</option>
+                                <option value="" disabled selected data-i18n="bug.tag_prompt">Wybierz kategorię...
+                                </option>
+                                <option value="UI" data-i18n="bug.tag.ui">🎨 UI</option>
+                                <option value="Crash" data-i18n="bug.tag.crash">💥 Crash</option>
+                                <option value="Performance" data-i18n="bug.tag.perf">⚡ Performance</option>
+                                <option value="Feature" data-i18n="bug.tag.feature">✨ Feature Request</option>
+                                <option value="Other" data-i18n="bug.tag.other">📌 Other</option>
                             </select>
                             <div class="tag-preview">
-                                <span class="tag-badge ui">UI</span>
-                                <span class="tag-badge crash">Crash</span>
-                                <span class="tag-badge performance">Perf</span>
-                                <span class="tag-badge feature">Feature</span>
-                                <span class="tag-badge other">Other</span>
+                                <span class="tag-badge ui" data-i18n="bug.tag.ui">UI</span>
+                                <span class="tag-badge crash" data-i18n="bug.tag.crash">Crash</span>
+                                <span class="tag-badge performance" data-i18n="bug.tag.perf">Perf</span>
+                                <span class="tag-badge feature" data-i18n="bug.tag.feature">Feature</span>
+                                <span class="tag-badge other" data-i18n="bug.tag.other">Other</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="bug-description">Opis <span class="required">*</span></label>
-                        <textarea id="bug-description" name="description"
+                        <label for="bug-description"><span data-i18n="bug.desc">Opis</span> <span
+                                class="required">*</span></label>
+                        <textarea id="bug-description" name="description" data-i18n-placeholder="bug.desc_placeholder"
                             placeholder="Opisz problem lub sugestię jak najdokładniej..." required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="bug-media">Link do screena / wideo</label>
+                        <label for="bug-media" data-i18n="bug.media">Link do screena / wideo</label>
                         <input type="url" id="bug-media" name="media" placeholder="https://imgur.com/...">
-                        <span class="form-hint">Opcjonalnie — wklej link do Imgur, YouTube, Google Drive itp.</span>
+                        <span class="form-hint" data-i18n="bug.media_hint">Opcjonalnie — wklej link do Imgur, YouTube,
+                            Google Drive itp.</span>
                     </div>
 
-                    <button type="submit" id="bug-submit" class="btn primary submit-btn">
+                    <button type="submit" id="bug-submit" class="btn primary submit-btn" data-i18n="bug.submit">
                         🚀 Wyślij zgłoszenie
                     </button>
 

@@ -9,6 +9,13 @@ const DOWNLOAD_PASSWORD = 'Sx7#kQ9mW2pL4';
 const GITHUB_REPO = 'samplixpoweredbynox/SAMPLIX-TOOLS';
 const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases`;
 
+// ─── Translations Helper ──────────────────────────────────
+
+function getI18n(key, fallback = '') {
+    const lang = localStorage.getItem('samplix_lang') || 'en';
+    return (translations[lang] && translations[lang][key]) ? translations[lang][key] : (fallback || key);
+}
+
 // ─── Helpers ──────────────────────────────────────────────
 
 function classifyRelease(release) {
@@ -56,7 +63,7 @@ function renderPlatformCards(release, containerId) {
     if (!release) {
         container.innerHTML = `
             <div class="dl-empty">
-                <div class="badge" style="font-size:1.2rem; padding:10px 24px;">SOON!</div>
+                <div class="badge" style="font-size:1.2rem; padding:10px 24px;">${getI18n('download.coming_soon_btn', 'SOON!')}</div>
             </div>`;
         return;
     }
@@ -76,7 +83,7 @@ function renderPlatformCards(release, containerId) {
     if (Object.keys(platformAssets).length === 0) {
         container.innerHTML = `
             <div class="dl-empty">
-                <p>Brak plików do pobrania w tym wydaniu (${version}).</p>
+                <p>${getI18n('download.empty', 'No downloads available.').replace('${version}', version)}</p>
             </div>`;
         return;
     }
@@ -97,7 +104,7 @@ function renderPlatformCards(release, containerId) {
                     <button class="btn primary platform-dl-btn"
                             data-url="${asset.browser_download_url}"
                             data-name="${asset.name}">
-                        ⬇ Pobierz
+                        ${getI18n('download.btn_dl', '⬇ Download')}
                     </button>
                 </div>`;
         } else {
@@ -106,20 +113,40 @@ function renderPlatformCards(release, containerId) {
                     <div class="platform-icon">${meta.icon}</div>
                     <h3>${meta.label}</h3>
                     <p class="platform-version">—</p>
-                    <p class="platform-file">Niedostępne</p>
+                    <p class="platform-file">${getI18n('download.unavailable', 'Unavailable')}</p>
                     <button class="btn secondary platform-dl-btn" disabled
                             style="opacity:0.4;cursor:not-allowed;">
-                        Wkrótce
+                        ${getI18n('download.coming_soon_btn', 'Coming Soon')}
                     </button>
                 </div>`;
         }
     });
 
     html += '</div>';
+
+    // Platform-specific launch hints
     html += `
         <div class="dl-instruction">
-            <p>�️ <strong>Windows:</strong> Jeśli system blokuje plik, kliknij <strong>Więcej informacji</strong> → <strong>Uruchom mimo to</strong>.</p>
-            <p style="margin-top:8px;">🍎 <strong>macOS:</strong> Przy komunikacie o „nieznanym deweloperze" — kliknij Anuluj, następnie wejdź w <strong>Ustawienia → Prywatność i bezpieczeństwo</strong>, zjedź na dół i kliknij <strong>Otwórz mimo to</strong>. Potwierdź hasłem / Touch ID i kliknij <strong>Otwórz</strong>.</p>
+            <p>${getI18n('download.windows_instr')}</p>
+            <p style="margin-top:8px;">${getI18n('download.macos_instr')}</p>
+        </div>`;
+
+    // NEW: General startup instructions
+    html += `
+        <div class="panel" style="margin-top:40px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                ⚙️ ${getI18n('download.instr.title')}
+            </h3>
+            <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                <li style="display:flex; gap:12px;">
+                    <span style="color:var(--accent); font-weight:bold;">1.</span>
+                    <span>${getI18n('download.instr.step1')}</span>
+                </li>
+                <li style="display:flex; gap:12px;">
+                    <span style="color:var(--accent); font-weight:bold;">2.</span>
+                    <span>${getI18n('download.instr.step2')}</span>
+                </li>
+            </ul>
         </div>`;
 
     container.innerHTML = html;
@@ -272,7 +299,7 @@ async function initDownloadPage() {
             if (el) {
                 el.innerHTML = `
                     <div class="dl-empty dl-error">
-                        <p>⚠️ Nie udało się pobrać danych z GitHub. Spróbuj ponownie później.</p>
+                        <p>${getI18n('download.error_fetch', '⚠️ Error fetching data.')}</p>
                     </div>`;
             }
         });
