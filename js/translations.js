@@ -41,7 +41,7 @@ const translations = {
         "hero.cta_secondary": "View Packs",
 
         "features.management.title": "Advanced Management",
-        "features.management.desc": "Organize your samples with powerful tagging and Custom Script categorization.",
+        "features.management.desc": "Organize your samples with powerful tagging and AI-driven categorization.",
         "features.themes.title": "Customizable Themes",
         "features.themes.desc": "Make Samplix yours with complete theming support. Design your own or download community skins.",
         "features.vst.title": "VST Integration",
@@ -136,7 +136,7 @@ const translations = {
         "hero.cta_secondary": "Zobacz Paczki",
 
         "features.management.title": "Zaawansowane Zarządzanie",
-        "features.management.desc": "Organizuj swoje próbki dzięki potężnemu systemowi tagowania i Autorskim Skryptem.",
+        "features.management.desc": "Organizuj swoje próbki dzięki potężnemu systemowi tagowania i kategoryzacji AI.",
         "features.themes.title": "Dostosowywalne Motywy",
         "features.themes.desc": "Dopasuj Samplix do siebie dzięki pełnemu wsparciu motywów. Projektuj własne lub pobieraj skórki społeczności.",
         "features.vst.title": "Integracja VST",

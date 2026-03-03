@@ -129,44 +129,31 @@
                     data-i18n="badge.free">FREE</span>
             </h2>
 
-            <div class="flex-wrap-gap">
-                <!-- Left: Description & Changelog -->
-                <div class="flex-2-min">
-                    <div class="panel">
-                        <h2 data-i18n="download.whats_new">What's New in Alpha 2.6</h2>
-                        <ul class="changelog">
-                            <li data-i18n="download.changelog.1">Improved Theme Engine with real-time persistence.</li>
-                            <li data-i18n="download.changelog.2">Fixed audio glitching on sample switch.</li>
-                            <li data-i18n="download.changelog.3">New "Mint" and "Ocean" default themes.</li>
-                            <li data-i18n="download.changelog.4">Performance optimizations for large libraries.</li>
-                        </ul>
-                    </div>
+            <div class="release-tabs">
+                <button class="release-tab active" data-tab-group="desktop" data-tab-target="desktop-stable">
+                    🟢 Stable
+                </button>
+                <button class="release-tab" data-tab-group="desktop" data-tab-target="desktop-beta">
+                    🧪 Beta
+                </button>
+            </div>
 
-                    <div class="screenshot-container">
-                        <img src="assets/app_screenshot_2.png" alt="Samplix Interface" class="screenshot-img">
-                    </div>
+            <div id="desktop-stable" data-tab-section="desktop" style="display:block;">
+                <div class="dl-spinner-container">
+                    <div class="dl-spinner"></div>
+                    <p>Ładowanie wydań...</p>
                 </div>
+            </div>
 
-                <!-- Right: Downloads -->
-                <div class="flex-1-min">
-                    <div class="download-card" style="width: 100%; margin-bottom: 20px;">
-                        <h2>Windows</h2>
-                        <p class="version">Version Alpha 2.6 .exe</p>
-                        <button class="btn primary disabled"
-                            style="width: 100%; justify-content: center; opacity: 0.6; cursor: not-allowed;"
-                            data-i18n="download.coming_soon">Coming in
-                            Beta 1.0</button>
-                    </div>
-
-                    <div class="download-card" style="width: 100%;">
-                        <h2>macOS</h2>
-                        <p class="version">Version Alpha 2.6 .app</p>
-                        <button class="btn secondary disabled"
-                            style="width: 100%; justify-content: center; opacity: 0.6; cursor: not-allowed;"
-                            data-i18n="download.coming_soon">Coming in
-                            Beta 1.0</button>
-                    </div>
+            <div id="desktop-beta" data-tab-section="desktop" style="display:none;">
+                <div class="dl-spinner-container">
+                    <div class="dl-spinner"></div>
+                    <p>Ładowanie wydań...</p>
                 </div>
+            </div>
+
+            <div class="screenshot-container" style="margin-top:30px;">
+                <img src="assets/app_screenshot_2.png" alt="Samplix Interface" class="screenshot-img">
             </div>
         </section>
 
@@ -174,39 +161,19 @@
         <section class="section-spacer">
             <div class="panel patron-panel">
                 <div class="flex-2-min">
-                    <h2 style="color: var(--accent); margin-bottom: 15px;" data-i18n="download.patron.title">Become a
-                        Patron & Go Premium</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);"
-                        data-i18n="download.patron.desc">
-                        Support the development of Samplix and unlock exclusive rewards. It's more than just a
-                        donation—it's your fast-track to the future of sampling.
+                    <h2 style="color: var(--accent); margin-bottom: 15px;">Wesprzyj mnie na
+                        Patronite</h2>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);">
+                        Jeśli podoba Ci się Samplix, możesz wesprzeć jego rozwój na Patronite.
+                        Każde wsparcie pomaga tworzyć lepsze narzędzia muzyczne. 🎶
                     </p>
-                    <ul class="patron-list">
-                        <li class="patron-item">
-                            <span style="color: var(--accent);">🚀</span> <b data-i18n="download.patron.benefit.1">Early
-                                VST Access</b>
-                        </li>
-                        <li class="patron-item">
-                            <span style="color: var(--accent);">🎨</span> <b
-                                data-i18n="download.patron.benefit.2">Exclusive Gold Theme</b>
-                        </li>
-                        <li class="patron-item">
-                            <span style="color: var(--accent);">💎</span> <b
-                                data-i18n="download.patron.benefit.3">Premium Discord Role</b>
-                        </li>
-                        <li class="patron-item">
-                            <span style="color: var(--accent);">❤️</span> <b
-                                data-i18n="download.patron.benefit.4">Support Development</b>
-                        </li>
-                    </ul>
                 </div>
                 <div class="flex-1-min" style="text-align: center;">
                     <a href="https://patronite.pl/hexitrely" target="_blank" class="btn primary"
-                        style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;"
-                        data-i18n="download.patron.btn">Join on
+                        style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;">Wesprzyj na
                         Patronite</a>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);"
-                        data-i18n="download.patron.sub">Join the elite.</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);">Dziękuję za każde
+                        wsparcie! ❤️</p>
                 </div>
             </div>
         </section>
@@ -220,12 +187,9 @@
                     data-i18n="badge.paid">PAID</span>
             </h2>
 
-            <div class="centered-content">
+            <div id="vst-releases" class="centered-content">
                 <div class="badge" data-i18n="download.vst.badge">COMING SOON</div>
                 <p data-i18n="download.vst.desc">Bring the power of Samplix directly into your DAW.</p>
-                <p style="margin-top: 10px; color: var(--text-secondary);" data-i18n="download.vst.price">Paid version.
-                    <strong style="color: var(--accent);">Free for Patrons.</strong>
-                </p>
 
                 <div class="newsletter">
                     <p data-i18n="download.discord.join">Join our community on Discord to get notified:</p>
@@ -238,6 +202,21 @@
             </div>
         </section>
     </main>
+
+    <!-- Password Modal -->
+    <div id="password-modal" class="password-overlay">
+        <div class="password-modal">
+            <h3>🔒 Wymagane hasło</h3>
+            <p>Wpisz hasło, aby pobrać plik.</p>
+            <input type="password" id="password-input" placeholder="Hasło..." autocomplete="off">
+            <p id="password-error" class="password-error" style="display:none;">❌ Nieprawidłowe hasło. Spróbuj ponownie.
+            </p>
+            <div class="password-actions">
+                <button id="password-confirm" class="btn primary">Potwierdź</button>
+                <button id="password-cancel" class="btn secondary">Anuluj</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -254,6 +233,7 @@
     <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/download.js"></script>
 </body>
 
 </html>

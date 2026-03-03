@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samplix - Bug Tracker</title>
+    <meta name="description" content="Report bugs and request features for Samplix.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logonew.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ─── Bug Tracker Styles ──────────────────────────── */
+
+        .bug-form-container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .bug-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bug-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bug-form label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bug-form label .required {
+            color: var(--accent);
+            margin-left: 2px;
+        }
+
+        .bug-form input[type="text"],
+        .bug-form input[type="email"],
+        .bug-form input[type="url"],
+        .bug-form select,
+        .bug-form textarea {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .bug-form input:focus,
+        .bug-form select:focus,
+        .bug-form textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(79, 255, 163, 0.1);
+        }
+
+        .bug-form select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .bug-form select option {
+            background-color: var(--bg-panel);
+            color: var(--text-primary);
+        }
+
+        .bug-form textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .submit-btn {
+            position: relative;
+            padding: 14px 32px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 20px rgba(79, 255, 163, 0.3), 0 0 60px rgba(79, 255, 163, 0.1);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Status messages */
+        .form-status {
+            text-align: center;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(79, 255, 163, 0.1);
+            border: 1px solid rgba(79, 255, 163, 0.3);
+            color: var(--accent);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            color: #ff6b6b;
+        }
+
+        /* Tag badges */
+        .tag-preview {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .tag-badge {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-badge.ui {
+            background: rgba(88, 101, 242, 0.2);
+            color: #7c8af4;
+        }
+
+        .tag-badge.crash {
+            background: rgba(255, 79, 79, 0.2);
+            color: #ff6b6b;
+        }
+
+        .tag-badge.performance {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .tag-badge.feature {
+            background: rgba(79, 255, 163, 0.2);
+            color: var(--accent);
+        }
+
+        .tag-badge.other {
+            background: rgba(160, 160, 160, 0.2);
+            color: var(--text-secondary);
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logonew.png" alt="Samplix Logo">
+                <span>Samplix</span>
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="download.html" data-i18n="nav.download">Download</a>
+                <a href="skins.html" data-i18n="nav.skins">Skins</a>
+                <div class="dropdown">
+                    <button class="dropbtn" data-i18n="nav.tools">Tools</button>
+                    <div class="dropdown-content">
+                        <a href="theme-creator.html" data-i18n="nav.theme_creator">Theme Creator</a>
+                        <a href="pack_creator.html" data-i18n="nav.pack_creator">Pack Creator</a>
+                    </div>
+                </div>
+                <a href="supported_packs.html" data-i18n="nav.packs">Packs</a>
+                <a href="bugreport.html" class="active">Bug Tracker</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Bug <span class="accent">Tracker</span></h1>
+            <p>Znalazłeś błąd lub masz pomysł? Daj nam znać.</p>
+        </section>
+
+        <div class="bug-form-container">
+            <div class="panel">
+                <form id="bug-form" class="bug-form" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bug-nick">Nick <span class="required">*</span></label>
+                            <input type="text" id="bug-nick" name="nick" placeholder="Twój nick..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bug-email">Email</label>
+                            <input type="email" id="bug-email" name="email" placeholder="email@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bug-version">Version <span class="required">*</span></label>
+                            <select id="bug-version" name="version" required>
+                                <option value="" disabled selected>Ładowanie wersji...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bug-tag">Tag <span class="required">*</span></label>
+                            <select id="bug-tag" name="tag" required>
+                                <option value="" disabled selected>Wybierz kategorię...</option>
+                                <option value="UI">🎨 UI</option>
+                                <option value="Crash">💥 Crash</option>
+                                <option value="Performance">⚡ Performance</option>
+                                <option value="Feature">✨ Feature Request</option>
+                                <option value="Other">📌 Other</option>
+                            </select>
+                            <div class="tag-preview">
+                                <span class="tag-badge ui">UI</span>
+                                <span class="tag-badge crash">Crash</span>
+                                <span class="tag-badge performance">Perf</span>
+                                <span class="tag-badge feature">Feature</span>
+                                <span class="tag-badge other">Other</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bug-description">Opis <span class="required">*</span></label>
+                        <textarea id="bug-description" name="description"
+                            placeholder="Opisz problem lub sugestię jak najdokładniej..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bug-media">Link do screena / wideo</label>
+                        <input type="url" id="bug-media" name="media" placeholder="https://imgur.com/...">
+                        <span class="form-hint">Opcjonalnie — wklej link do Imgur, YouTube, Google Drive itp.</span>
+                    </div>
+
+                    <button type="submit" id="bug-submit" class="btn primary submit-btn">
+                        🚀 Wyślij zgłoszenie
+                    </button>
+
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://hexitrely.pl" target="_blank">Hexit Rely</a>
+                <a href="https://open.spotify.com/artist/4hcXADTFvPXtRxVTGYXW4I?si=PtVSpKbdTgS1t2JG468iXA&nd=1"
+                    target="_blank">Spotify</a>
+                <a href="https://www.instagram.com/hexit_official" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/channel/UCIpPTE3HsmUSAb-yfNybvSA" target="_blank">YouTube</a>
+            </div>
+            <p>&copy; 2026 Samplix Project.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/bugreport.js"></script>
+</body>
+
+</html>
