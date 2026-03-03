@@ -7,6 +7,8 @@ const translations = {
         "nav.theme_creator": "Theme Creator",
         "nav.pack_creator": "Pack Creator",
         "nav.packs": "Packs",
+        "features.secret.title": "Secret Script",
+        "features.secret.desc": "Unlock hidden features and experimental sampling techniques.",
 
         "badge.free": "FREE",
         "badge.paid": "PAID",
@@ -92,6 +94,8 @@ const translations = {
         "nav.theme_creator": "Kreator Motywów",
         "nav.pack_creator": "Kreator Paczek",
         "nav.packs": "Paczki",
+        "features.secret.title": "Secret Script",
+        "features.secret.desc": "Odblokuj ukryte funkcje i eksperymentalne techniki samplingu.",
 
         "badge.free": "DARMOWE",
         "badge.paid": "PŁATNE",
