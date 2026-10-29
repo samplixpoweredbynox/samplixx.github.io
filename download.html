@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samplix - Download</title>
+    <title>Samplix – Free Download | Open Beta for Windows & macOS</title>
     <meta name="description"
-        content="Download Samplix for Windows and macOS. join our Patronite for exclusive rewards.">
-    <meta name="keywords" content="download samplix, sampler download, free sampler, music production software">
-    <meta property="og:title" content="Samplix - Download">
-    <meta property="og:description" content="Choose your platform and start creating with Samplix.">
+        content="Download Samplix for free – Open Beta now available for Windows & macOS. The next-generation sample manager for music producers.">
+    <meta name="keywords" content="download samplix, free sampler download, open beta sampler, music production software, windows sampler, macos sampler">
+    <meta property="og:title" content="Samplix – Free Open Beta Download">
+    <meta property="og:description" content="Samplix Open Beta is live! Download free for Windows & macOS.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -114,10 +114,27 @@
         </div>
     </nav>
 
+    <!-- Ambient Decorative Background Elements -->
+    <div class="bg-ambient-layer" aria-hidden="true">
+        <img src="assets/samplix-soundwave.svg" alt="" class="bg-ambient-soundwave">
+        <img src="assets/samplix-sygnet-pillar.svg" alt="" class="bg-ambient-pillar">
+        <img src="assets/samplix-neon-short.svg" alt="" class="bg-ambient-neon">
+    </div>
+
     <main class="container">
-        <section class="page-header">
-            <h1 data-i18n="download.title">Download <span class="accent">Samplix</span></h1>
-            <p data-i18n="download.subtitle">Choose your platform and start creating.</p>
+        <section class="page-header page-header--with-hero">
+            <div class="page-header-text">
+                <span class="sub-badge" style="background: linear-gradient(135deg, #4fff9f, #00c4ff); color:#000; font-weight:700; font-size:0.8rem; padding:4px 12px; border-radius:20px; letter-spacing:0.05em; text-transform:uppercase; display:inline-block; margin-bottom:12px;">🚀 Open Beta Available</span>
+                <h1 data-i18n="download.title">Download <span class="accent">Samplix</span></h1>
+                <p data-i18n="download.subtitle">Choose your platform and start creating.</p>
+            </div>
+            <div class="header-hero-mascot">
+                <img src="assets/samplix-brand-hero-pose-8.svg" alt="Lix Ready to Download" class="header-mascot-img">
+                <div class="header-mascot-pill">
+                    <span class="pulse-dot"></span>
+                    <span>Direct Download</span>
+                </div>
+            </div>
         </section>
 
         <!-- Desktop Section -->
@@ -130,22 +147,22 @@
             </h2>
 
             <div class="release-tabs">
-                <button class="release-tab active" data-tab-group="desktop" data-tab-target="desktop-stable">
-                    🟢 Stable
-                </button>
-                <button class="release-tab" data-tab-group="desktop" data-tab-target="desktop-beta">
+                <button class="release-tab active" data-tab-group="desktop" data-tab-target="desktop-beta">
                     🧪 Beta
+                </button>
+                <button class="release-tab" data-tab-group="desktop" data-tab-target="desktop-stable">
+                    🟢 Stable
                 </button>
             </div>
 
-            <div id="desktop-stable" data-tab-section="desktop" style="display:block;">
+            <div id="desktop-beta" data-tab-section="desktop" style="display:block;">
                 <div class="dl-spinner-container">
                     <div class="dl-spinner"></div>
                     <p data-i18n="download.loading">Ładowanie wydań...</p>
                 </div>
             </div>
 
-            <div id="desktop-beta" data-tab-section="desktop" style="display:none;">
+            <div id="desktop-stable" data-tab-section="desktop" style="display:none;">
                 <div class="dl-spinner-container">
                     <div class="dl-spinner"></div>
                     <p data-i18n="download.loading">Ładowanie wydań...</p>
@@ -161,23 +178,23 @@
         <section class="section-spacer">
             <div class="panel patron-panel">
                 <div class="flex-2-min">
-                    <h2 style="color: var(--accent); margin-bottom: 15px;" data-i18n="download.patron.title">Wesprzyj
-                        mnie na
+                    <h2 style="color: var(--accent); margin-bottom: 15px;" data-i18n="download.patron.title">Support
+                        me on
                         Patronite</h2>
                     <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-primary);"
                         data-i18n="download.patron.desc">
-                        Jeśli podoba Ci się Samplix, możesz wesprzeć jego rozwój na Patronite.
-                        Każde wsparcie pomaga tworzyć lepsze narzędzia muzyczne. 🎶
+                        If you enjoy Samplix, you can support its development on Patronite.
+                        Every bit of support helps create better music tools. 🎶
                     </p>
                 </div>
                 <div class="flex-1-min" style="text-align: center;">
                     <a href="https://patronite.pl/hexitrely" target="_blank" class="btn primary"
                         style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 15px;"
-                        data-i18n="download.patron.btn">Wesprzyj na
+                        data-i18n="download.patron.btn">Support on
                         Patronite</a>
                     <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-secondary);"
-                        data-i18n="download.patron.sub">Dziękuję za każde
-                        wsparcie! ❤️</p>
+                        data-i18n="download.patron.sub">Thank you for every
+                        bit of support! ❤️</p>
                 </div>
             </div>
         </section>
@@ -207,22 +224,7 @@
         </section>
     </main>
 
-    <!-- Password Modal -->
-    <div id="password-modal" class="password-overlay">
-        <div class="password-modal">
-            <h3 data-i18n="download.modal.title">🔒 Wymagane hasło</h3>
-            <p data-i18n="download.modal.desc">Wpisz hasło, aby pobrać plik.</p>
-            <input type="password" id="password-input" data-i18n-placeholder="download.modal.placeholder"
-                placeholder="Hasło..." autocomplete="off">
-            <p id="password-error" class="password-error" style="display:none;" data-i18n="download.modal.error">❌
-                Nieprawidłowe hasło. Spróbuj ponownie.
-            </p>
-            <div class="password-actions">
-                <button id="password-confirm" class="btn primary" data-i18n="download.modal.confirm">Potwierdź</button>
-                <button id="password-cancel" class="btn secondary" data-i18n="download.modal.cancel">Anuluj</button>
-            </div>
-        </div>
-    </div>
+
 
     <footer>
         <div class="footer-content">

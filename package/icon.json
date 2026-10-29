@@ -1,0 +1,189 @@
+{
+  "color-space-for-untagged-svg-colors" : "display-p3",
+  "fill" : {
+    "automatic-gradient" : "display-p3:0.15154,0.15128,0.14177,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "samplix-neon-long.svg",
+          "name" : "samplix-neon-long",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              -82.56186999801503,
+              942.8484375
+            ]
+          }
+        },
+        {
+          "image-name" : "samplix-neon-long.svg",
+          "name" : "samplix-neon-long",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              -400.897807498015,
+              748.559375
+            ]
+          }
+        },
+        {
+          "image-name" : "samplix-neon-long.svg",
+          "name" : "samplix-neon-long",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              408.235005001985,
+              656.6453125
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "samplix-neon-short.svg",
+          "name" : "samplix-neon-short",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              -450.889994998015,
+              123.34531250000009
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "samplix-neon-short.svg",
+          "name" : "samplix-neon-short",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              -44.26499499801503,
+              317.28863611751706
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "samplix-neon-short.svg",
+          "name" : "samplix-neon-short",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              403.735005001985,
+              -20.100000000000023
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "samplix-brand-hero-pose-2.svg",
+          "name" : "samplix-brand-hero-pose-2",
+          "position" : {
+            "scale" : 2,
+            "translation-in-points" : [
+              -252.99690249230252,
+              311.54535241340625
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "saplix-glow.svg",
+          "name" : "saplix-glow",
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              15.96875,
+              465.171875
+            ]
+          }
+        },
+        {
+          "glass" : true,
+          "image-name" : "samplix-sygnet.svg",
+          "name" : "samplix-sygnet"
+        },
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "image-name" : "samplix-pillar3.svg",
+          "name" : "samplix-pillar3",
+          "position" : {
+            "scale" : 6,
+            "translation-in-points" : [
+              -253.12406250000004,
+              568.51875
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "image-name" : "samplix-pillar3.svg",
+          "name" : "samplix-pillar3",
+          "position" : {
+            "scale" : 8,
+            "translation-in-points" : [
+              276.695005001985,
+              410.984375
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "image-name" : "samplix-pillar1.svg",
+          "name" : "samplix-pillar1",
+          "position" : {
+            "scale" : 8,
+            "translation-in-points" : [
+              -380.6171875,
+              362.21875
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "image-name" : "samplix-pillar2.svg",
+          "name" : "samplix-pillar2",
+          "position" : {
+            "scale" : 7,
+            "translation-in-points" : [
+              362.5859375,
+              220.3203125
+            ]
+          }
+        },
+        {
+          "glass" : false,
+          "image-name" : "samplix-sygnet-pillar.svg",
+          "name" : "samplix-sygnet-pillar",
+          "opacity" : 0.25,
+          "position" : {
+            "scale" : 10,
+            "translation-in-points" : [
+              0,
+              228.99869983430074
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

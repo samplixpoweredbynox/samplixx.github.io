@@ -5,7 +5,7 @@
  * PASSWORD: Set to null or "" to disable the password gate entirely.
  */
 
-const DOWNLOAD_PASSWORD = 'Sx7#kQ9mW2pL4';
+const DOWNLOAD_PASSWORD = null; // Open Beta – no password required
 const GITHUB_REPO = 'samplixpoweredbynox/SAMPLIX-TOOLS';
 const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases`;
 
