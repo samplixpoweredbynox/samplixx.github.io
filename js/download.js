@@ -102,6 +102,7 @@ function renderPlatformCards(release, containerId) {
                     <p class="platform-version">${version}</p>
                     <p class="platform-file">${asset.name}</p>
                     <button class="btn primary platform-dl-btn"
+                            data-i18n="download.btn_dl"
                             data-url="${asset.browser_download_url}"
                             data-name="${asset.name}">
                         ${getI18n('download.btn_dl', '⬇ Download')}
@@ -113,8 +114,9 @@ function renderPlatformCards(release, containerId) {
                     <div class="platform-icon">${meta.icon}</div>
                     <h3>${meta.label}</h3>
                     <p class="platform-version">—</p>
-                    <p class="platform-file">${getI18n('download.unavailable', 'Unavailable')}</p>
+                    <p class="platform-file" data-i18n="download.unavailable">${getI18n('download.unavailable', 'Unavailable')}</p>
                     <button class="btn secondary platform-dl-btn" disabled
+                            data-i18n="download.coming_soon_btn"
                             style="opacity:0.4;cursor:not-allowed;">
                         ${getI18n('download.coming_soon_btn', 'Coming Soon')}
                     </button>
@@ -127,24 +129,24 @@ function renderPlatformCards(release, containerId) {
     // Platform-specific launch hints
     html += `
         <div class="dl-instruction">
-            <p>${getI18n('download.windows_instr')}</p>
-            <p style="margin-top:8px;">${getI18n('download.macos_instr')}</p>
+            <p data-i18n="download.windows_instr">${getI18n('download.windows_instr')}</p>
+            <p style="margin-top:8px;" data-i18n="download.macos_instr">${getI18n('download.macos_instr')}</p>
         </div>`;
 
     // NEW: General startup instructions
     html += `
         <div class="panel" style="margin-top:40px; border-left: 4px solid var(--accent);">
             <h3 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
-                ⚙️ ${getI18n('download.instr.title')}
+                ⚙️ <span data-i18n="download.instr.title">${getI18n('download.instr.title')}</span>
             </h3>
             <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
                 <li style="display:flex; gap:12px;">
                     <span style="color:var(--accent); font-weight:bold;">1.</span>
-                    <span>${getI18n('download.instr.step1')}</span>
+                    <span data-i18n="download.instr.step1">${getI18n('download.instr.step1')}</span>
                 </li>
                 <li style="display:flex; gap:12px;">
                     <span style="color:var(--accent); font-weight:bold;">2.</span>
-                    <span>${getI18n('download.instr.step2')}</span>
+                    <span data-i18n="download.instr.step2">${getI18n('download.instr.step2')}</span>
                 </li>
             </ul>
         </div>`;
@@ -252,6 +254,18 @@ function initTabs(sectionPrefix) {
 
 // ─── Main Init ────────────────────────────────────────────
 
+let cachedStable = null;
+let cachedBeta = null;
+let cachedVST = null;
+
+window.addEventListener('languageChanged', () => {
+    if (cachedStable || cachedBeta) {
+        renderPlatformCards(cachedStable, 'desktop-stable');
+        renderPlatformCards(cachedBeta, 'desktop-beta');
+        renderVSTSection(cachedVST);
+    }
+});
+
 async function initDownloadPage() {
     try {
         const response = await fetch(API_URL);
@@ -277,6 +291,10 @@ async function initDownloadPage() {
             // Stop early if we have everything
             if (latestStable && latestBeta && latestVST) break;
         }
+
+        cachedStable = latestStable;
+        cachedBeta = latestBeta;
+        cachedVST = latestVST;
 
         // Render Desktop section
         renderPlatformCards(latestStable, 'desktop-stable');

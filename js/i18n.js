@@ -6,6 +6,7 @@ function setLanguage(lang) {
 
     updateContent(lang);
     updateActiveSwitcher(lang);
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
 }
 
 function updateContent(lang) {
